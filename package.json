@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./index",
+    "watch": "webpack --w --mode development",
+    "start": "concurrently \"npm run dev\" \"npm run watch\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,31 @@
   "bugs": {
     "url": "https://github.com/Halvarado30/PresupuestoH/issues"
   },
-  "homepage": "https://github.com/Halvarado30/PresupuestoH#readme"
+  "homepage": "https://github.com/Halvarado30/PresupuestoH#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.0.0",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.2.0",
+    "mongoose": "^5.7.4",
+    "multer": "^1.4.2",
+    "shortid": "^2.2.15",
+    "slug": "^1.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/preset-env": "^7.6.3",
+    "audit": "0.0.6",
+    "babel-loader": "^8.0.6",
+    "concurrently": "^5.0.0",
+    "fix": "0.0.6",
+    "nodemon": "^1.19.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9"
+  }
 }
