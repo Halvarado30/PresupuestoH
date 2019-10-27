@@ -4,16 +4,14 @@ const slug = require("slug");
 const shortid = require("shortid");
 
 const categoriaSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    trim: true
-  },
   nombre: {
     type: String,
-    trim: true
+    trim: true,
+    unique: true
   },
   cantidad: {
     type: String,
+    default: 0,
     trim: true
   },
   tipo: {
@@ -21,13 +19,23 @@ const categoriaSchema = new mongoose.Schema({
     trim: true
   },
   usuario: {
-    type: String,
-    trim: true
+    type: mongoose.Schema.ObjectId,
+    ref: "Usuarios",
+    required: "Usuario obligatorio"
   },
   url: {
     type: String,
     lowercase: true
   }
+});
+
+// Hooks para generar la URL (en Mongoose se conoce como middleware)
+categoriaSchema.pre("save", function(next) {
+  // Crear la URL
+  const url = slug(this.nombre);
+  this.url = `${url}-${shortid.generate()}`;
+
+  next();
 });
 
 module.exports = mongoose.model("Categorias", categoriaSchema);

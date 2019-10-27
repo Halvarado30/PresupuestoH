@@ -5,8 +5,14 @@ const exphbs = require("express-handlebars");
 const path = require("path");
 const router = require("./routes/index");
 const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
 const flash = require("connect-flash");
+const passport = require("passport");
+
+// Habilitar el archivo de variales de entorno
+require("dotenv").config({ path: "variables.env" });
 
 const app = express();
 
@@ -30,6 +36,20 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Creación de la sesión y de la cookie
 app.use(cookieParser());
+
+app.use(
+  session({
+    secret: process.env.SECRET,
+    key: process.env.KEY,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Alertas y flash messages
 app.use(flash());

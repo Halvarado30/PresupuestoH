@@ -15,6 +15,16 @@ const usuariosSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  apellido: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  telefono: {
+    type: String,
+    required: false,
+    trim: true
+  },
   password: {
     type: String,
     required: true,

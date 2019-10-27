@@ -2,10 +2,10 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 
 exports.autenticarUsuario = passport.authenticate("local", {
-  //   successRedirect: "/controPersonal",
-  //   failureRedirect: "/iniciarSesion",
-  //   failureFlash: true,
-  //   badRequestMessage: ["Debes ingresar ambas credenciales"]
+  successRedirect: "/",
+  failureRedirect: "/iniciarSesion",
+  failureFlash: true,
+  badRequestMessage: ["Debes ingresar ambas credenciales"]
 });
 
 // Cerrar la sesión del usuario actual

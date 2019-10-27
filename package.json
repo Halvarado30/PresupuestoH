@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Halvarado30/PresupuestoH#readme",
   "dependencies": {
+    "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.0.0",
@@ -30,8 +31,11 @@
     "express-validator": "^6.2.0",
     "mongoose": "^5.7.4",
     "multer": "^1.4.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "shortid": "^2.2.15",
-    "slug": "^1.1.0"
+    "slug": "^1.1.0",
+    "sweetalert2": "^8.18.6"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

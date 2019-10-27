@@ -1,20 +1,21 @@
 <main class="contenedor">
-    {{!-- <link rel="stylesheet" href="/css/css.css"> --}}
-    <button type="button" class="collapsible" onmouseover="collapsible()">Ingresos y Egresos</button>
-    <div class="content">
-        <form>
-            <input class="form-control input-lg" type="text" id="income" placeholder="Nombre de Ingreso/Egreso" /><br>
-            <input class="form-control input-lg" type="number" id="income" placeholder="Cantidad" /><br>
-            <select name="select">
-                <option value="1">Ingresos</option>
-                <option value="2">Educación</option>
-                <option value="3">Hogar</option>
-                <option value="4">Transporte</option>
-                <option value="5">Personales</option>
+    <form method="POST" action="/categoria/nuevaCategoria">
+        <button type="button" class="collapsible" onmouseover="collapsible()">Ingresos y Egresos</button>
+        <div class="content">
+
+            <input name="nombre" class="form-control input-lg" type="text" id="nombre"
+                placeholder="Nombre de Ingreso/Egreso" /><br>
+            <input class="form-control input-lg" type="number" name="cantidad" id="cantidad"
+                placeholder="Cantidad" /><br>
+            <select name="tipo" id="tipo">
+                <option value="1">Ingreso</option>
+                <option value="2">Egreso</option>
             </select>
-        </form>
-    </div>
-    <button type="submit">Guardar</button>
-    <button><a href="/">Regresar</a></button>
-    {{!-- <script src="/js/collapsible.js"></script> --}}
+        </div>
+        <div>
+            <input type="submit" value="Crear Categoria"></input>
+            <button><a href="/">Regresar</a></button>
+        </div>
+
+    </form>
 </main>

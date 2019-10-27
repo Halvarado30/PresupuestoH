@@ -6,8 +6,16 @@ const categoriasContoller = require("../controllers/categoriaController");
 
 module.exports = () => {
   router.get("/", principalController.mostrarInicio);
-  router.get("/nueva_categoria", categoriasContoller.mostrarCategoria);
+  router.get(
+    "/categoria/nuevaCategoria",
+    categoriasContoller.formularioCategoria
+  );
   router.get("/crearCuenta", usuarioController.formularioCrearCuenta);
+  router.post(
+    "/categoria/nuevaCategoria",
+    categoriasContoller.agregarCategoria
+  );
   router.get("/iniciarSesion", usuarioController.inicioSesion);
+  router.get("/categoria/:url", categoriasContoller.mostrarCategoria);
   return router;
 };
