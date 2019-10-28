@@ -19,6 +19,18 @@
   padding: 0 18px;
   display: none;
   overflow: hidden;
-  /* background-color: #f1f1f1; */
-  background-color: blue;
+  background-color: #cfd3d2;
+}
+
+.retorno {
+  width: 315px;
+  border: 1px solid #ebebeb;
+  background: #fff;
+  height: 48px;
+  padding: 0 25px;
+  border-radius: 50px;
+  font-family: "Futura", sans-serif;
+  font-size: 16px;
+  margin-right: 8px;
+  margin-bottom: 20px;
 }

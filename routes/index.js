@@ -34,7 +34,11 @@ module.exports = () => {
   );
 
   // Presupuesto
-  router.get("/presupuesto", prespuestoController.mostrarTrabajos);
+  router.get(
+    "/presupuesto",
+    authController.verificarUsuario,
+    prespuestoController.mostrarTrabajos
+  );
 
   // Login
   router.get("/iniciarSesion", usuarioController.inicioSesion);

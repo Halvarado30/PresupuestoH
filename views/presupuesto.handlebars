@@ -1,6 +1,7 @@
 <main class="contenedor">
     <div>
-        <h1>Ingresos</h1>
+        <h2>Lista de Ingresos</h2>
+        <br>
         {{#each losIngresos}}
         <div class="">
             <h3>{{nombre}}: L. {{cantidad}}</h3>
@@ -8,8 +9,9 @@
 
         {{/each}}
         <h3>Total Ingresos: L. {{ingreso}}</h3>
-
-        <h1>Egresos</h1>
+        <br><br>
+        <h2>Lista de Egresos</h2>
+        <br>
         {{#each losEgresos}}
         <div class="">
             <h3>{{nombre}}: L. {{cantidad}}</h3>
@@ -19,7 +21,9 @@
         <h3>Total Egresos: L. {{egreso}}</h3>
 
         <br>
-        <h3>Restante: L. {{restante}}</h3>
-        <h3>observación: {{observacion}}</h3>
+        <h3>Monto restante: L. {{restante}}</h3>
+        <h3>Observación: {{observacion}}</h3>
     </div>
+    <br>
+    <button class="retorno"><a href="/">Regresar</a></button>
 </main>
