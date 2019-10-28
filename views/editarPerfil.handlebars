@@ -1,23 +1,28 @@
 <main class="contenedor">
-    <form action="/" method="post" class="default-form">
+    <form action="/editarPerfil" method="post" class="default-form">
         <div class="campo">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" placeholder="">
+            <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="{{usuario.nombre}}"
+                required>
         </div>
         <div class="campo">
             <label for="apellido">Apellido</label>
-            <input type="text" name="apellido" placeholder="">
+            <input type="text" id="apellido" name="apellido" placeholder="Ingresa tu apellido"
+                value="{{usuario.apellido}}" required>
         </div>
         <div class="campo">
             <label for="email">Correo electrónico</label>
-            <input type="email" name="email" placeholder="">
+            <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico"
+                value="{{usuario.email}}">
         </div>
         <div class="campo">
             <label for="telefono">Teléfono</label>
-            <input type="number" name="telefono" placeholder="">
+            <input type="number" id="telefono" name="telefono" placeholder="Ingresa tu número"
+                value="{{usuario.telefono}}">
         </div>
         <div class="campo">
             <input type="submit" value="Actualizar" class="">
+            <a href="/">Cancelar</a>
         </div>
     </form>
 </main>

@@ -10,7 +10,7 @@ const categoriaSchema = new mongoose.Schema({
     unique: true
   },
   cantidad: {
-    type: String,
+    type: Number,
     default: 0,
     trim: true
   },

@@ -3,20 +3,42 @@ const router = express.Router();
 const principalController = require("../controllers/principalController");
 const usuarioController = require("../controllers/usuarioController");
 const categoriasContoller = require("../controllers/categoriaController");
+const authController = require("../controllers/authController");
+const prespuestoController = require("../controllers/presupuestoController");
 const { check } = require("express-validator");
 
 module.exports = () => {
-  router.get("/", principalController.mostrarInicio);
+  router.get(
+    "/",
+    authController.verificarUsuario,
+    principalController.mostrarInicio
+  );
+
+  router.get(
+    "/principal",
+    authController.verificarUsuario,
+    principalController.mostrarInicio
+  );
+
+  // Categorias
   router.get(
     "/categoria/nuevaCategoria",
+    authController.verificarUsuario,
     categoriasContoller.formularioCategoria
   );
   router.get("/crearCuenta", usuarioController.formularioCrearCuenta);
   router.post(
     "/categoria/nuevaCategoria",
+    authController.verificarUsuario,
     categoriasContoller.agregarCategoria
   );
+
+  // Presupuesto
+  router.get("/presupuesto", prespuestoController.mostrarTrabajos);
+
+  // Login
   router.get("/iniciarSesion", usuarioController.inicioSesion);
+  router.post("/iniciarSesion", authController.autenticarUsuario);
   router.get("/categoria/:url", categoriasContoller.mostrarCategoria);
 
   // Crear un usuario
@@ -52,5 +74,10 @@ module.exports = () => {
     ],
     usuarioController.crearUsuario
   );
+
+  router.get("/cerrarSesion", authController.cerrarSesion);
+
+  router.get("/editarPerfil", usuarioController.formularioEdicion);
+  router.post("/editarPerfil", usuarioController.editarPerfil);
   return router;
 };

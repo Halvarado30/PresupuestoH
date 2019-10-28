@@ -9,7 +9,8 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const bodyParser = require("body-parser");
 const flash = require("connect-flash");
-const passport = require("passport");
+
+const passport = require("./config/passport");
 
 // Habilitar el archivo de variales de entorno
 require("dotenv").config({ path: "variables.env" });

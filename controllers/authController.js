@@ -2,7 +2,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 
 exports.autenticarUsuario = passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: "/principal",
   failureRedirect: "/iniciarSesion",
   failureFlash: true,
   badRequestMessage: ["Debes ingresar ambas credenciales"]

@@ -1,0 +1,25 @@
+<main class="contenedor">
+    <div>
+        <h1>Ingresos</h1>
+        {{#each losIngresos}}
+        <div class="">
+            <h3>{{nombre}}: L. {{cantidad}}</h3>
+        </div>
+
+        {{/each}}
+        <h3>Total Ingresos: L. {{ingreso}}</h3>
+
+        <h1>Egresos</h1>
+        {{#each losEgresos}}
+        <div class="">
+            <h3>{{nombre}}: L. {{cantidad}}</h3>
+        </div>
+
+        {{/each}}
+        <h3>Total Egresos: L. {{egreso}}</h3>
+
+        <br>
+        <h3>Restante: L. {{restante}}</h3>
+        <h3>observación: {{observacion}}</h3>
+    </div>
+</main>
