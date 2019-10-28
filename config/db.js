@@ -13,4 +13,4 @@ mongoose.connection.on("error", error => {
 
 // importamos los modelos
 require("../models/Categorias");
-require("../models/Usuarios");
+require("../models/Usuario");

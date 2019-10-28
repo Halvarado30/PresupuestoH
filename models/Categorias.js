@@ -20,7 +20,7 @@ const categoriaSchema = new mongoose.Schema({
   },
   usuario: {
     type: mongoose.Schema.ObjectId,
-    ref: "Usuarios",
+    ref: "Usuario",
     required: "Usuario obligatorio"
   },
   url: {

@@ -3,7 +3,7 @@ mongoose.Promise = global.Promise;
 const bcrypt = require("bcrypt");
 
 // Definición del schema
-const usuariosSchema = new mongoose.Schema({
+const usuarioSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
@@ -34,7 +34,7 @@ const usuariosSchema = new mongoose.Schema({
   expira: Date
 });
 // Hooks (método) para hash + salt password
-usuariosSchema.pre("save", function(next) {
+usuarioSchema.pre("save", function(next) {
   const user = this;
 
   // Si el password ya fué modificado (ya hasheado)
@@ -43,8 +43,6 @@ usuariosSchema.pre("save", function(next) {
   }
 
   // Generar el salt y si no hay error, hashear el password
-  // Se almacena tanto el hash+salt para evitar ataques
-  // de rainbow table.
   bcrypt.genSalt(10, (err, salt) => {
     // Si hay un error no continuar
     if (err) return next(err);
@@ -60,7 +58,7 @@ usuariosSchema.pre("save", function(next) {
 });
 
 // Hooks para poder pasar los errores de MongoBD hacia express validator
-usuariosSchema.post("save", function(error, doc, next) {
+usuarioSchema.post("save", function(error, doc, next) {
   // Verificar que es un error de MongoDB
   if (error.name === "MongoError" && error.code === 11000) {
     next(
@@ -73,10 +71,10 @@ usuariosSchema.post("save", function(error, doc, next) {
 
 // Realizar un método que automáticamente verifique el password ingresado
 // contra el almacenado (hash + salt)
-usuariosSchema.methods.compararPassword = function(candidatePassword) {
+usuarioSchema.methods.compararPassword = function(candidatePassword) {
   return bcrypt.compareSync(candidatePassword, this.password);
 };
-usuariosSchema.methods.comparePassword = function(candidatePassword) {
+usuarioSchema.methods.comparePassword = function(candidatePassword) {
   const user = this;
 
   return new Promise((resolve, reject) => {
@@ -94,4 +92,4 @@ usuariosSchema.methods.comparePassword = function(candidatePassword) {
   }).catch();
 };
 
-module.exports = mongoose.model("Usuarios", usuariosSchema);
+module.exports = mongoose.model("Usuario", usuarioSchema);
