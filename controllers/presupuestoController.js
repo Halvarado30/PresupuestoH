@@ -39,8 +39,8 @@ exports.mostrarTrabajos = async (req, res, next) => {
   if (!losEgresos) return next();
 
   res.render("presupuesto", {
-    nombrePagina: " DevFinder",
-    tagline: "Encuentra y publica trabajos para desarrolladores",
+    nombrePagina: "",
+    tagline: "",
     barra: true,
     boton: true,
     losIngresos,
