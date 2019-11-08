@@ -13,8 +13,6 @@ exports.mostrarTrabajos = async (req, res, next) => {
     tipo: "2",
     usuario: req.user._id
   });
-  console.log(losIngresos);
-  console.log(losEgresos);
 
   var ingreso = 0;
   for (x in losIngresos) {

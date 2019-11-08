@@ -36,7 +36,6 @@ exports.agregarCategoria = async (req, res) => {
 
   // Agregando el usuario que crea la categoria
   categoria.usuario = req.user._id;
-  console.log(req.body);
 
   try {
     await categoria.save();
