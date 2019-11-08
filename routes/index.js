@@ -82,6 +82,25 @@ module.exports = () => {
   router.get("/cerrarSesion", authController.cerrarSesion);
 
   router.get("/editarPerfil", usuarioController.formularioEdicion);
-  router.post("/editarPerfil", usuarioController.editarPerfil);
+  router.post(
+    "/editarPerfil",
+    usuarioController.subirImagen,
+    usuarioController.editarPerfil
+  );
+
+  // Restablecer la contraseña del usuario de presupuesto
+  router.get(
+    "/restablecerPassword",
+    authController.formularioRestablecerPassword
+  );
+  router.post("/restablecerPassword", authController.enviarToken);
+  router.get(
+    "/restablecerPassword/:token",
+    authController.formularioNuevaPassword
+  );
+  router.post(
+    "/restablecerPassword/:token",
+    authController.almacenarNuevaPassword
+  );
   return router;
 };
