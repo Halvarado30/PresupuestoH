@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 const Categoria = mongoose.model("Categorias");
+const Usuario = mongoose.model("Usuario");
 
 exports.mostrarTrabajos = async (req, res, next) => {
-  const usuario = req.user;
-
   // Obtener todos los documentos de los ingresos
   const losIngresos = await Categoria.find({
-    tipo: "1"
+    tipo: "1",
+    usuario: req.user._id
   });
 
   const losEgresos = await Categoria.find({
-    tipo: "2"
+    tipo: "2",
+    usuario: req.user._id
   });
   console.log(losIngresos);
   console.log(losEgresos);
@@ -29,7 +30,7 @@ exports.mostrarTrabajos = async (req, res, next) => {
   var observacion = 0;
   restante = ingreso - egreso;
   if (restante > 0) {
-    observacion = "No hay problema con tus gastos";
+    observacion = "Tus gastos no exceden el total de tus ingresos";
   } else {
     observacion = "Tus gastos exceden tus ingresos";
   }
@@ -48,6 +49,7 @@ exports.mostrarTrabajos = async (req, res, next) => {
     ingreso,
     egreso,
     restante,
-    observacion
+    observacion,
+    nombre: req.user.nombre
   });
 };

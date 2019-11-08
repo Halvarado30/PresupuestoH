@@ -6,7 +6,8 @@ const { validationResult } = require("express-validator");
 exports.formularioCategoria = async (req, res) => {
   res.render("categorias", {
     nombrePagina: "Nueva categoria",
-    tagline: "Llena el formulario"
+    tagline: "Llena el formulario",
+    nombre: req.user.nombre
   });
 };
 
@@ -25,6 +26,7 @@ exports.agregarCategoria = async (req, res) => {
     res.render("categorias", {
       nombrePagina: "Nueva categoria",
       tagline: "¡Llena el formulario, por favor!",
+      nombre: req.user.nombre,
       messages: req.flash()
     });
     return;
@@ -33,12 +35,12 @@ exports.agregarCategoria = async (req, res) => {
   const categoria = new Categoria(req.body);
 
   // Agregando el usuario que crea la categoria
-  categoria.usuario = "req.user._id";
+  categoria.usuario = req.user._id;
   console.log(req.body);
 
   try {
     await categoria.save();
-    res.redirect("/categoria/nuevaCategoria");
+    res.redirect("/principal");
   } catch (error) {
     erroresArray.push(error);
     req.flash("error", erroresArray);
@@ -46,6 +48,7 @@ exports.agregarCategoria = async (req, res) => {
     res.render("categorias", {
       nombrePagina: "Nueva categoria",
       tagline: "¡Llena el formulario, por favor!",
+      nombre: req.user.nombre,
       messages: req.flash()
     });
   }
@@ -60,6 +63,7 @@ exports.mostrarCategoria = async (req, res, next) => {
 
   res.render("cuenta", {
     nombrePagina: categoria.nombre,
-    categoria
+    categoria,
+    nombre: req.user.nombre
   });
 };

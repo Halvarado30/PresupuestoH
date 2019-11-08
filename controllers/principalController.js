@@ -5,6 +5,7 @@ exports.mostrarInicio = async (req, res, next) => {
     nombrePagina: "Presupuesto personal",
     tagline: "",
     barra: true,
-    boton: true
+    boton: true,
+    nombre: req.user.nombre
   });
 };

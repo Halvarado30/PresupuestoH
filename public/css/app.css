@@ -37,6 +37,7 @@ h3 {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .separador {
   padding-bottom: 2rem;
   padding-top: 2rem;
@@ -74,6 +75,10 @@ h3 {
 }
 .btn-rojo {
   background-color: #c80045;
+}
+
+.cierre {
+  float: left;
 }
 
 .editar-btn {
@@ -387,6 +392,29 @@ trix-toolbar .trix-button--icon-strike {
   display: block;
   margin-bottom: 2rem;
 }
+
+.campo label {
+  padding-top: 1rem;
+  flex: 0 0 18rem;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.campo input[type="text"] {
+  flex: 1;
+  height: 4.5rem;
+  padding: 1rem;
+  font-size: 1.8rem;
+  border-radius: 1rem;
+  border: none;
+}
+
+.campo input[type="file"] {
+  color: white;
+}
+
 .default-form input[type="submit"] {
   margin-top: 2rem;
 }

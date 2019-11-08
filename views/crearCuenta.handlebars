@@ -1,5 +1,9 @@
 <main class="contenedor">
-    <form action="/crearCuenta" method="post" class="default-form">
+    <form action="/crearCuenta" method="post" class="default-form" enctype="multipart/form-data">
+        <div class="campo">
+            <label for="imagen">Selecciona una imagen de perfil</label>
+            <input type="file" name="imagen">
+        </div>
         <div class="campo">
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" placeholder="Ingresa tu nombre">
@@ -25,6 +29,6 @@
             <input type="password" name="confirmpassword" placeholder="Vuelve a introducir tu contraseña">
         </div>
         <input type="submit" value="Crear cuenta" class="btn-form">
-        <button class="retorno"><a href="/">Regresar</a></button>
+        <button class="retorno"><a href="/iniciarSesion">Regresar</a></button>
     </form>
 </main>
